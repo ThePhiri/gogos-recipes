@@ -29,11 +29,13 @@ function Veggie() {
             <Wrapper >
                 <h3>Vegetarian Recipes</h3>
                 <Splide options={{
-                    perPage: 3,
-                    arrows: false,
+                    perPage: 1,
+                    arrows: true,
                     pagination: false,
                     drag: 'free',
                     gap: "5 rem",
+                    autoHeight: true,
+                    autoWidth: true,
                 }} >
                     {veggie.map((recipe) => {
                         return (

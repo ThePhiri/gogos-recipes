@@ -29,11 +29,13 @@ function Popular() {
                 <Wrapper >
                    <h3>Popular Recipes</h3>
                      <Splide options={{
-                         perPage: 4,
-                         arrows: false,
-                         pagination: false,
-                         drag: 'free',
-                         gap: "5 rem",
+                        perPage: 1,
+                        arrows: true,
+                        pagination: false,
+                        drag: 'free',
+                        gap: "5 rem",
+                        autoHeight: true,
+                        autoWidth: true,
                      }} >
                         {popular.map((recipe) => {
                             return (
@@ -72,6 +74,8 @@ const Card = styled.div`
             width: 100%;
             height: 100%;
             object-fit: cover;
+
+            
         }
 
         p {

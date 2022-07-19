@@ -1,12 +1,17 @@
 import Pages from "./pages/Pages";
 import './index.css';
+import Category from "./components/Category";
+import { BrowserRouter } from "react-router-dom";
 
 
 function App() {
   return (
     <div className="App">
-      <h1>Hau Gogo, You are here</h1>
-      <Pages/>
+      <BrowserRouter>
+        <Category />
+        <Pages />
+      </BrowserRouter>
+
     </div>
   );
 }
