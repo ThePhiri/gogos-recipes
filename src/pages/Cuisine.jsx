@@ -56,7 +56,7 @@ const Grid = styled.div`
 
     h4 {
         text-align: center;
-        padding: 1rem;
+      //  padding: 1rem;
     }
     `;
 export default Cuisine
