@@ -4,6 +4,6 @@
 
 @layer base {
   button {
-    @apply border border-black rounded-xl px-5 py1
+    @apply border border-orange-500 rounded-xl px-5 py-1;
   }
 }
