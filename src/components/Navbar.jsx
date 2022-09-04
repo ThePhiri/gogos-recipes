@@ -48,6 +48,7 @@ const Navbar = () => {
                     <ul className='flex flex-col p-4 text-gray-800'>
                         <li className='text-xl py-2 flex'>Explore</li>
                         <li className='text-xl py-2 flex'>Trending</li>
+                        <li className='text-xl py-2 flex'>Login</li>
                         <li className='text-xl py-2 flex'>About us</li>
                     </ul>
 
