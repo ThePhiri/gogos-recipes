@@ -1,16 +1,11 @@
 import React from 'react'
-import FoodList from './components/FoodList'
-import HeadlineCards from './components/HeadlineCards'
-import Hero from './components/Hero'
-import Navbar from './components/Navbar'
+import Home from './pages/Home'
+
 
 function App() {
   return (
     <div>
-      <Navbar />
-      <Hero />
-      <HeadlineCards/>
-      <FoodList />
+      <Home/>
     </div>
 
   )

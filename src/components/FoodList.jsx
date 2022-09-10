@@ -6,25 +6,37 @@ const FoodList = () => {
 
     useEffect(() => {
         getFoodList();
-         console.log("what", foodList);
+         console.log("foods", foodList);
     }, []);
 
     const getFoodList = async () => {
-        const check = localStorage.getItem("foodList");
-       
 
-        if (check) {
-            setFoodList(JSON.parse(check));
-        } else {
             const api = await fetch (`https://gogos-recipes-backend.herokuapp.com/api/recipes`);
             const data = await api.json();
-            localStorage.setItem("foodList", JSON.stringify(data));
-            setFoodList(data);
+            setFoodList(data.data);
            
-        }
+        
     }
   return (
-    <div>FoodList</div>
+    <div>
+        <h1  className='text-orange-600 font-bold text-4xl text-center'>Recent Recipes</h1>
+
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
+           
+            {foodList.map((item, index ) => (
+                <div key={index} className='border shadow-lg hover:scale-105 duration-300 rounded-lg'>
+                    <img src={item.image} alt={item.name} className='w-full h-[200px] object-cover rounded-t-lg' />
+                    <div className='flex justify-between px-2 py-4'>
+                        <p className='font-bold capitalize'>{item.name}</p>
+                        <button>View</button>
+                    </div>
+                </div>
+            ))}
+     
+        </div>
+        
+
+    </div>
   )
 }
 
