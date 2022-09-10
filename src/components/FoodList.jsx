@@ -18,7 +18,7 @@ const FoodList = () => {
         
     }
   return (
-    <div>
+    <div className='max-w-[1640px] mx-auto p-4 py-12'>
         <h1  className='text-orange-600 font-bold text-4xl text-center'>Recent Recipes</h1>
 
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
