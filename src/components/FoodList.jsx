@@ -1,5 +1,6 @@
 import React from 'react'
 import {useEffect, useState} from "react";
+import { Link } from "react-router-dom";
 
 const FoodList = () => {
     const [foodList, setFoodList] = useState([])
@@ -28,7 +29,7 @@ const FoodList = () => {
                     <img src={item.image} alt={item.name} className='w-full h-[200px] object-cover rounded-t-lg' />
                     <div className='flex justify-between px-2 py-4'>
                         <p className='font-bold capitalize'>{item.name}</p>
-                        <button>View</button>
+                        <Link to={"/recipe/" + item._id}><button>View</button></Link>
                     </div>
                 </div>
             ))}
