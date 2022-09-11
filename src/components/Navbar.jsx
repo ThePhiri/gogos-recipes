@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
 import { BsPersonFill } from 'react-icons/bs'
 
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [nav, setNav ] = useState(false)
@@ -14,9 +14,9 @@ const Navbar = () => {
                 <div onClick={()=> setNav(!nav)} className='cursor-pointer'>
                     <AiOutlineMenu size={30} />
                 </div>
-                <h1 className='text-2xl sm:text-3xl lg:text-4xl px-2'>
+               <Link to="/"> <h1 className='text-2xl sm:text-3xl lg:text-4xl px-2'>
                     Gogo's <span className='font-bold text-orange-500'>Recipes</span>
-                </h1>
+                </h1></Link>
             </div>
 
             <div className='bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]'>
