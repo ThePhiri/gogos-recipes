@@ -62,7 +62,7 @@ function Recipe() {
 
             </div>
 
-            <div className="flex flex-col pt-16 pr-4 pb-16 pl-4" >
+            <div className="flex flex-col mt-0 mr-auto mb-0 ml-auto pt-16 pr-4 pb-16 pl-4 relative lg:pt-8 xl:pt-16 xl:pb-4 md:px-8" >
                 <h1 className='text-orange-600 font-bold text-4xl text-center'>Recent Recipes</h1>
                 {steps.length ? steps.map((item, index) => (
                     <div>
