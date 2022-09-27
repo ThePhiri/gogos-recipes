@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 function SignUp() {
     const [firstName, setFirstName] = useState(null);
@@ -8,6 +8,7 @@ function SignUp() {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState(null);
+    const [registered, setRegistered] = useState(false)
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
@@ -50,9 +51,16 @@ function SignUp() {
             redirect: 'follow'
         };
 
+
         fetch("https://gogos-recipes-backend.herokuapp.com/api/users/signup", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+                if (result.status === "success") {
+                    window.location = "/login";
+                }
+
+            })
             .catch(error => console.log('error', error));
 
         // 1. Redirect to users page that has his/her recipes and options to add recipes
