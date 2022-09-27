@@ -1,37 +1,25 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
-    const [firstName, setFirstName] = useState(null);
-    const [lastName, setLastName] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
-    const [confirmPassword, setConfirmPassword] = useState(null);
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
 
-        if (id === "firstName") {
-            setFirstName(value);
-        }
-        if (id === "lastName") {
-            setLastName(value);
-        }
         if (id === "email") {
             setEmail(value);
         }
         if (id === "password") {
             setPassword(value);
         }
-        if (id === "confirmPassword") {
-            setConfirmPassword(value);
-        }
 
     }
 
     const handleSubmit = () => {
-        console.log(firstName, lastName, email, password, confirmPassword);
+        console.log(email, password);
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -52,9 +40,10 @@ function Login() {
         fetch("https://gogos-recipes-backend.herokuapp.com/api/users/login", requestOptions)
             .then(response => response.json())
             .then(result => {
-                console.log(result)
                 if (result.status === "success") {
-                    window.location = "/profile";
+                    localStorage.setItem('token', result.data.token)
+
+                    window.location = "/profile/" + result.data.user_id;
                 }
 
             })
@@ -111,7 +100,7 @@ function Login() {
 
                                 <div className="flex -mx-3">
                                     <div className="w-full px-3 mb-5">
-                                        <button className="block w-full max-w-xs mx-auto bg-orange-500 hover:bg-orange-700 focus:bg-orange-700 text-white rounded-lg px-3 py-3 font-semibold" onClick={() => handleSubmit()}>REGISTER NOW</button>
+                                        <button className="block w-full max-w-xs mx-auto bg-orange-500 hover:bg-orange-700 focus:bg-orange-700 text-white rounded-lg px-3 py-3 font-semibold" onClick={() => handleSubmit()}>LOGIN</button>
                                     </div>
                                 </div>
                             </div>

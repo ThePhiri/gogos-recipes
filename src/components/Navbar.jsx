@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
 import { BsPersonFill } from 'react-icons/bs'
 
@@ -6,6 +6,15 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [nav, setNav] = useState(false)
+    const [authenticated, setAuthenticated] = useState(null);
+
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem("token");
+
+        if (loggedInUser) {
+            setAuthenticated(loggedInUser)
+        }
+    }, [])
 
     return (
         <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
@@ -24,14 +33,24 @@ const Navbar = () => {
                 <input type="text" placeholder='Search recipes' className='bg-transparent p-2 focus:outline-none w-[200px] sm:w-[400px] lg:w-[500px]' />
             </div>
             {/* Login Buttons */}
+
             <div className='hidden md:flex items-center space-x-2'>
-                <Link to={"/login"}> <button className='bg-orange-500 text-white flex items-center py-2 '>
-                    <BsPersonFill size={20} className='mr-2' />
-                    Log In
-                </button></Link>
-                <Link to={"/signup"}>                <button className='py-2'>
-                    Sign Up
-                </button></Link>
+                {authenticated &&
+                    <div>
+                        <Link to={"/signup"}>                <button className='py-2'>
+                            Log out
+                        </button></Link>
+                    </div>}
+                {!authenticated &&
+                    <div><Link to={"/login"}> <button className='bg-orange-500 text-white flex items-center py-2 '>
+                        <BsPersonFill size={20} className='mr-2' />
+                        Log In
+                    </button></Link>
+                        <Link to={"/signup"}>                <button className='py-2'>
+                            Sign Up
+                        </button></Link>
+                    </div>
+                }
 
 
 
