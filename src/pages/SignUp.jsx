@@ -1,8 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import { Link } from "react-router-dom";
 
 function SignUp() {
+    const [firstName, setFirstName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [confirmPassword, setConfirmPassword] = useState(null);
+
+    const handleInputChange = (e) => {
+        const { id, value } = e.target;
+
+        if (id === "firstName") {
+            setFirstName(value);
+        }
+        if (id === "lastName") {
+            setLastName(value);
+        }
+        if (id === "email") {
+            setEmail(value);
+        }
+        if (id === "password") {
+            setPassword(value);
+        }
+        if (id === "confirmPassword") {
+            setConfirmPassword(value);
+        }
+
+    }
+
+    const handleSubmit = () => {
+        console.log(firstName, lastName, email, password, confirmPassword);
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "first_name": firstName,
+            "last_name": lastName,
+            "email": email,
+            "password": password,
+            "verified": false
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://gogos-recipes-backend.herokuapp.com/api/users/signup", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
+        // 1. Redirect to users page that has his/her recipes and options to add recipes
+
+
+    }
+
+
     return (
         <div>
             <Navbar />
@@ -24,14 +82,22 @@ function SignUp() {
                                         <label htmlFor="" className="text-xs font-semibold px-1">First name</label>
                                         <div className="flex">
                                             <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-orange-500" placeholder="John" />
+                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-orange-500"
+                                                value={firstName}
+                                                onChange={(e) => handleInputChange(e)}
+                                                id="firstName"
+                                                placeholder="John" />
                                         </div>
                                     </div>
                                     <div className="w-1/2 px-3 mb-5">
                                         <label htmlFor="" className="text-xs font-semibold px-1">Last name</label>
                                         <div className="flex">
                                             <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-orange-500" placeholder="Smith" />
+                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-orange-500"
+                                                value={lastName}
+                                                onChange={(e) => handleInputChange(e)}
+                                                id="lastName"
+                                                placeholder="Smith" />
                                         </div>
                                     </div>
                                 </div>
@@ -40,7 +106,11 @@ function SignUp() {
                                         <label htmlFor="" className="text-xs font-semibold px-1">Email</label>
                                         <div className="flex">
                                             <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                            <input type="email" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-orange-500" placeholder="johnsmith@example.com" />
+                                            <input type="email" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-orange-500"
+                                                value={email}
+                                                onChange={(e) => handleInputChange(e)}
+                                                id="email"
+                                                placeholder="johnsmith@example.com" />
                                         </div>
                                     </div>
                                 </div>
@@ -49,13 +119,28 @@ function SignUp() {
                                         <label htmlFor="" className="text-xs font-semibold px-1">Password</label>
                                         <div className="flex">
                                             <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="mdi mdi-lock-outline text-gray-400 text-lg"></i></div>
-                                            <input type="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-orange-500" placeholder="************" />
+                                            <input type="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-orange-500"
+                                                value={password} onChange={(e) => handleInputChange(e)}
+                                                id="password"
+                                                placeholder="************" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex -mx-3">
+                                    <div className="w-full px-3 mb-12">
+                                        <label htmlFor="" className="text-xs font-semibold px-1">Confirm Password</label>
+                                        <div className="flex">
+                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="mdi mdi-lock-outline text-gray-400 text-lg"></i></div>
+                                            <input type="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-orange-500"
+                                                value={confirmPassword} onChange={(e) => handleInputChange(e)}
+                                                id="confirmPassword"
+                                                placeholder="************" />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex -mx-3">
                                     <div className="w-full px-3 mb-5">
-                                        <button className="block w-full max-w-xs mx-auto bg-orange-500 hover:bg-orange-700 focus:bg-orange-700 text-white rounded-lg px-3 py-3 font-semibold">REGISTER NOW</button>
+                                        <button className="block w-full max-w-xs mx-auto bg-orange-500 hover:bg-orange-700 focus:bg-orange-700 text-white rounded-lg px-3 py-3 font-semibold" onClick={() => handleSubmit()}>REGISTER NOW</button>
                                     </div>
                                 </div>
                             </div>
