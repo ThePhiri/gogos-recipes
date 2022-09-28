@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
+import MyRecipes from '../components/MyRecipes';
 import Navbar from '../components/Navbar'
 
 function Profile() {
@@ -22,6 +23,8 @@ function Profile() {
 
             <div>
                 <Navbar />
+
+                <MyRecipes />
 
 
             </div>
