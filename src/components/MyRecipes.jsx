@@ -1,9 +1,10 @@
 import React from 'react'
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const MyRecipes = () => {
     const [foodList, setMyRecipes] = useState([])
+    const params = useParams();
 
     useEffect(() => {
         getMyRecipes();
@@ -11,8 +12,20 @@ const MyRecipes = () => {
     }, []);
 
     const getMyRecipes = async () => {
+        const token = localStorage.getItem("token")
+        console.log("toekn", "https://gogos-recipes-backend.herokuapp.com/api/recipes/user/" + params.id + "?" + token);
 
-        const api = await fetch(`https://gogos-recipes-backend.herokuapp.com/api/recipes`);
+        var myHeaders = new Headers();
+        myHeaders.append("token", token);
+        var raw = "";
+
+        var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+
+        const api = await fetch("https://gogos-recipes-backend.herokuapp.com/api/recipes/user/" + params.id + "?" + token, requestOptions);
         const data = await api.json();
         setMyRecipes(data.data);
 
