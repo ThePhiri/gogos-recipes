@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
+import CreateRecipeForm from '../components/CreateRecipeForm';
 import MyRecipes from '../components/MyRecipes';
 import Navbar from '../components/Navbar'
 
@@ -25,6 +26,7 @@ function Profile() {
                 <Navbar />
 
                 <MyRecipes />
+                <CreateRecipeForm />
 
 
             </div>

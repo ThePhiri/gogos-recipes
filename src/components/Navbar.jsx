@@ -34,7 +34,7 @@ const Navbar = () => {
             </div>
             {/* Login Buttons */}
 
-            <div className='hidden md:flex items-center space-x-2'>
+            <div className='md:flex items-center space-x-2'>
                 {authenticated &&
                     <div>
                         <Link to={"/signup"}>                <button className='py-2'>
@@ -42,19 +42,35 @@ const Navbar = () => {
                         </button></Link>
                     </div>}
                 {!authenticated &&
-                    <div><Link to={"/login"}> <button className='bg-orange-500 text-white flex items-center py-2 '>
-                        <BsPersonFill size={20} className='mr-2' />
-                        Log In
-                    </button></Link>
-                        <Link to={"/signup"}>                <button className='py-2'>
-                            Sign Up
-                        </button></Link>
+                    // <div>
+                    //     <Link to={"/login"}>
+                    //         <button className='bg-orange-500 text-white flex items-center py-2 '>
+                    //             <BsPersonFill size={20} className='mr-2' />
+                    //             Log In
+                    //         </button>
+                    //     </Link>
+                    //     <Link to={"/signup"}>
+                    //         <button className='py-2'>
+                    //             Sign Up
+                    //         </button>
+                    //     </Link>
+                    // </div>
+
+                    <div className="order-2 md:order-3 flex flex-wrap items-center justify-end mr-0 md:mr-4" id="nav-content">
+                        <div className="auth flex items-center w-full md:w-full">
+                            <Link to={"/login"}>
+                                <button className="bg-transparent text-gray-800  p-2 rounded border border-gray-300 mr-4 hover:bg-gray-100 hover:text-gray-700">Sign in</button>
+                            </Link>
+                            <Link to={"/signup"}>
+                                <button className="bg-orange-600 text-gray-200  p-2 rounded  hover:bg-orange-500 hover:text-gray-100">Sign up</button>
+                            </Link>
+
+                        </div>
                     </div>
                 }
 
-
-
             </div>
+
             {/* Mobile Menu */}
             {/* Overlay */}
             {nav ? <div className='bg-orange-900/80 fixed w-full h-screen z-10 top-0 left-0'></div> : ''}
