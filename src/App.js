@@ -5,6 +5,7 @@ import Recipe from './pages/Recipe';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
+import CreateRecipe from './pages/CreateRecipe';
 
 
 
@@ -17,7 +18,8 @@ function App() {
             <Route path="recipe/:id" element={<Recipe />} />
             <Route path="login" element={<Login/>}/>
             <Route path="signup" element={<SignUp/>}/>
-             <Route path="profile/:id" element={<Profile/>}/>
+            <Route path="profile/:id" element={<Profile/>}/>
+            <Route path="addRecipe/:id" element={<CreateRecipe/>} />
       </Routes>
 
       </BrowserRouter>

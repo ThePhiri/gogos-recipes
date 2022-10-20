@@ -16,7 +16,6 @@ function Profile() {
     }, [])
 
     if (authenticated == "") {
-        console.log("Unauthorised");
         window.location = "/login";
     } else {
         console.log("authorised")
@@ -26,7 +25,6 @@ function Profile() {
                 <Navbar />
 
                 <MyRecipes />
-                <CreateRecipeForm />
 
 
             </div>

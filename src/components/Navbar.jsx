@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
 import { BsPersonFill } from 'react-icons/bs'
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const [nav, setNav] = useState(false)
     const [authenticated, setAuthenticated] = useState(null);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate("/Login")
+    }
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem("token");
@@ -37,9 +43,9 @@ const Navbar = () => {
             <div className='md:flex items-center space-x-2'>
                 {authenticated &&
                     <div>
-                        <Link to={"/signup"}>                <button className='py-2'>
+                        <button className='py-2' onClick={handleLogout}>
                             Log out
-                        </button></Link>
+                        </button>
                     </div>}
                 {!authenticated &&
                     // <div>
