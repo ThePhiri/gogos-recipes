@@ -42,6 +42,7 @@ function Login() {
             .then(result => {
                 if (result.status === "success") {
                     localStorage.setItem('token', result.data.token)
+                    localStorage.setItem('user', result.data.user_id)
                     console.log("local token", result.data.token)
 
                     window.location = "/profile/" + result.data.user_id;

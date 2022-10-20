@@ -13,12 +13,6 @@ const MyRecipes = () => {
     const getMyRecipes = async () => {
 
         const token = localStorage.getItem("token")
-
-
-        // var myHeaders = new Headers();
-        // myHeaders.append('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6ImNoaXBvZXBoaXJpQHlhaG9vLmNvbSIsIkZpcnN0X25hbWUiOiJDaGlwbyIsIkxhc3RfbmFtZSI6IlBoaXJpIiwiVWlkIjoiNjMzMjVkMzIwMTcxODBkOWUxMzhhNzA3IiwiZXhwIjoxNjY0OTk3MTExfQ.DSb-jSav0llrYxCjA75c1hkwc8toKTKrIuUm_NviPa0');
-
-
         var requestOptions = {
             method: 'GET',
             headers: {
@@ -27,7 +21,7 @@ const MyRecipes = () => {
             redirect: 'follow'
         };
 
-        fetch("https://gogos-recipes-backend.herokuapp.com/api/recipes/user/" + params.id, requestOptions)
+        await fetch("https://gogos-recipes-backend.herokuapp.com/api/recipes/user/" + params.id, requestOptions)
             .then(response => response.json())
             .then(result => {
                 setMyRecipes(result.data);

@@ -31,10 +31,14 @@ function CreateRecipeForm() {
             setCountry(value);
         }
         if (id === "ingredients") {
-            setIngredients(value.split(','));
+            const arr = value.split(",");
+            const steps = arr.map(step => ({ step }));
+            setIngredients(steps);
         }
         if (id === "steps") {
-            setSteps(value.split(','));
+            const arr = value.split(",");
+            const steps = arr.map(step => ({ step }));
+            setSteps(steps);
         }
     }
 

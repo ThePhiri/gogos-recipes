@@ -9,8 +9,13 @@ const Navbar = () => {
     const [authenticated, setAuthenticated] = useState(null);
     const navigate = useNavigate();
 
+    const user = localStorage.getItem("user")
+
+
+
     const handleLogout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem("user")
         navigate("/Login")
     }
 
@@ -21,6 +26,8 @@ const Navbar = () => {
             setAuthenticated(loggedInUser)
         }
     }, [])
+
+
 
     return (
         <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
@@ -43,6 +50,12 @@ const Navbar = () => {
             <div className='md:flex items-center space-x-2'>
                 {authenticated &&
                     <div>
+                        <Link to={"/profile/" + user}>
+                            <p className='text-orange[500] flex py-2 '>
+                                <BsPersonFill size={20} className='mr-2' />
+                                Account
+                            </p>
+                        </Link>
                         <button className='py-2' onClick={handleLogout}>
                             Log out
                         </button>
@@ -92,7 +105,6 @@ const Navbar = () => {
                     <ul className='flex flex-col p-4 text-gray-800'>
                         <li className='text-xl py-2 flex'>Explore</li>
                         <li className='text-xl py-2 flex'>Trending</li>
-                        <li className='text-xl py-2 flex'>Login</li>
                         <li className='text-xl py-2 flex'>About us</li>
                     </ul>
 
