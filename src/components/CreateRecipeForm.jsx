@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect, resolvePath, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function CreateRecipeForm() {
 
@@ -42,28 +42,28 @@ function CreateRecipeForm() {
         }
     }
 
-    const convertToBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            console.log("1");
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-            console.log("2");
-            fileReader.onload = () => {
-                resolve(fileReader.result);
-            };
-            console.log("3");
-            fileReader.onerror = (error) => {
-                reject(error);
-            };
-            console.log("4");
-        });
-    };
-    const handleFileUpload = async (e) => {
-        const file = e.target.files[0];
-        console.log("file", file)
-        const base64 = await convertToBase64(file);
-        setImage({ ...image, myFile: base64 });
-    };
+    // const convertToBase64 = (file) => {
+    //     return new Promise((resolve, reject) => {
+    //         console.log("1");
+    //         const fileReader = new FileReader();
+    //         fileReader.readAsDataURL(file);
+    //         console.log("2");
+    //         fileReader.onload = () => {
+    //             resolve(fileReader.result);
+    //         };
+    //         console.log("3");
+    //         fileReader.onerror = (error) => {
+    //             reject(error);
+    //         };
+    //         console.log("4");
+    //     });
+    // };
+    // const handleFileUpload = async (e) => {
+    //     const file = e.target.files[0];
+    //     console.log("file", file)
+    //     const base64 = await convertToBase64(file);
+    //     setImage({ ...image, myFile: base64 });
+    // };
 
 
     const handleSubmit = () => {

@@ -8,7 +8,7 @@ const MyRecipes = () => {
 
     useEffect(() => {
         getMyRecipes();
-    }, []);
+    }, [recipesList]);
 
     const getMyRecipes = async () => {
 

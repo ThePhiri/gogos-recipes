@@ -18,13 +18,13 @@ function Recipe() {
         setRecipe(data.data)
 
 
-
+        console.log("ingriedients->", ingridients)
     }
 
 
     useEffect(() => {
         getRecipe();
-    }, []);
+    }, [recipe]);
     return (
         <div  >
             <Navbar />
