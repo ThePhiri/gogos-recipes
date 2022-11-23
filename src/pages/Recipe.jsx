@@ -24,7 +24,7 @@ function Recipe() {
 
     useEffect(() => {
         getRecipe();
-    }, [recipe]);
+    });
     return (
         <div  >
             <Navbar />
