@@ -52,7 +52,7 @@ function SignUp() {
         };
 
 
-        fetch("https://gogos-recipes-backend.herokuapp.com/api/users/signup", requestOptions)
+        fetch("http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com//api/users/signup", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)

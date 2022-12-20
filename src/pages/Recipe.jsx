@@ -11,7 +11,7 @@ function Recipe() {
 
 
     const getRecipe = async () => {
-        const api = await fetch(`https://gogos-recipes-backend.herokuapp.com/api/recipes/${params.id}`)
+        const api = await fetch(`http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com//api/recipes/${params.id}`)
         const data = await api.json();
         setIngridients(data.data.ingridients)
         setSteps(data.data.steps)

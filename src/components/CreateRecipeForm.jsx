@@ -92,7 +92,7 @@ function CreateRecipeForm() {
         };
 
 
-        fetch("https://gogos-recipes-backend.herokuapp.com/api/recipes", requestOptions)
+        fetch("http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com//api/recipes", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
@@ -134,7 +134,6 @@ function CreateRecipeForm() {
                                                 placeholder="Tomato soup" />
                                         </div>
                                     </div>
-
                                 </div>
                                 <div className="flex -mx-3">
                                     <div className="w-full px-3 mb-5">
