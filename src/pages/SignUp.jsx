@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SignUp() {
     const [firstName, setFirstName] = useState(null);
@@ -8,7 +8,7 @@ function SignUp() {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState(null);
-    const [registered, setRegistered] = useState(false)
+    // const [registered, setRegistered] = useState(false)
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;

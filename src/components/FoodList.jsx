@@ -8,7 +8,7 @@ const FoodList = () => {
     useEffect(() => {
         getFoodList();
         console.log("foods", foodList);
-    }, []);
+    }, [foodList]);
 
     const getFoodList = async () => {
 

@@ -6,9 +6,7 @@ const MyRecipes = () => {
     const [recipesList, setMyRecipes] = useState([])
     const params = useParams();
 
-    useEffect(() => {
-        getMyRecipes();
-    }, []);
+
 
     const getMyRecipes = async () => {
 
@@ -32,6 +30,12 @@ const MyRecipes = () => {
 
 
     }
+
+    useEffect(() => {
+        getMyRecipes();
+    });
+
+
     return (
         <div className='max-w-[1640px] mx-auto p-4 py-12'>
             <h1 className='text-orange-600 font-bold text-4xl text-center'>My Recipes</h1>
