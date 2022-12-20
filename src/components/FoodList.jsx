@@ -12,7 +12,7 @@ const FoodList = () => {
 
     const getFoodList = async () => {
 
-        const api = await fetch(`http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com//api/recipes`);
+        const api = await fetch(`http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com/api/recipes`);
         const data = await api.json();
         setFoodList(data.data);
 

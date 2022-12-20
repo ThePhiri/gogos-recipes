@@ -37,7 +37,7 @@ function Login() {
         };
 
 
-        fetch("http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com//api/users/login", requestOptions)
+        fetch("http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com/api/users/login", requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result.status === "success") {

@@ -19,7 +19,7 @@ const MyRecipes = () => {
             redirect: 'follow'
         };
 
-        await fetch("http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com//api/recipes/user/" + params.id, requestOptions)
+        await fetch("http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com/api/recipes/user/" + params.id, requestOptions)
             .then(response => response.json())
             .then(result => {
                 setMyRecipes(result.data);

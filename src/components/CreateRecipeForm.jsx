@@ -92,7 +92,7 @@ function CreateRecipeForm() {
         };
 
 
-        fetch("http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com//api/recipes", requestOptions)
+        fetch("http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com/api/recipes", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
