@@ -7,9 +7,9 @@ on:
 
 jobs:
   build:
-    environment: Main
-    runs-on: ubuntu-latest
 
+    runs-on: ubuntu-latest
+    environment: Main
     strategy:
       matrix:
         node-version: [15.x]
