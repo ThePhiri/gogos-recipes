@@ -1,32 +1,26 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import Recipe from './pages/Recipe';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import Profile from './pages/Profile';
-import CreateRecipe from './pages/CreateRecipe';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Recipes from "./pages/Recipes";
 
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
+    <Router>
+      <Navbar />
+      <div className="container main">
         <Routes>
-          <Route path="gogos-recipes/" element={<Home />} />
-          <Route path="gogos-recipes/recipe/:id" element={<Recipe />} />
-          <Route path="gogos-recipes/login" element={<Login />} />
-          <Route path="gogos-recipes/signup" element={<SignUp />} />
-          <Route path="gogos-recipes/profile/:id" element={<Profile />} />
-          <Route path="gogos-recipes/addRecipe/:id" element={<CreateRecipe />} />
-        </Routes>
+          <Route path="/"  element={<Home/>} />
+          <Route path="/recipes"  element={<Recipes />} />
+          <Route path="/login"  element={<Login />} />
+        </Routes> 
+      </div>
+      <Footer />
+    </Router>
 
-      </BrowserRouter>
-
-    </div>
-
-  )
+  );
 }
 
-export default App
+export default App;
