@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import CustomImage from "./CustomImage"
 
 
@@ -20,7 +21,7 @@ function HeroSection() {
             <div className='col typography'>
                 <h1 className='title'>What are we about</h1>
                 <p className='info'>Gogos recipes is a place where you can please your soul and tummy with delicious food recepies of all things African. Our service is absolutely free. So start exploring now.</p>
-                <button className='btn'>Explore Now</button>
+                <Link to="/recipes"> <button className='btn'>Explore Now</button> </Link >
             </div>
             <div className="col gallery">
                 {images.map((src, index) => (
@@ -29,7 +30,7 @@ function HeroSection() {
 
 
             </div>
-        </div>
+        </div >
     )
 }
 

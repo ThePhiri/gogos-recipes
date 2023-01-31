@@ -7,13 +7,13 @@ import TopSection from "../components/TopSection";
 function Home() {
   return (
     <div>
-        <HeroSection />
-        <ImproveSkillsSection />
-        <QuoteSection/>
-        <TopSection />
+      <HeroSection />
+      <ImproveSkillsSection />
+      <QuoteSection />
+      {/* <TopSection /> */}
     </div>
 
-        
+
   )
 }
 
