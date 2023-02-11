@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import "./styles/index.scss"
-import { RecipeProvider } from './context/RecipesContext';
+import "./styles/App.css"
+import { AppProvider } from './context/AppContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RecipeProvider>
+    <AppProvider>
       <App />
-    </RecipeProvider>
+    </AppProvider>
 
   </React.StrictMode>
 );

@@ -1,34 +1,45 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
-const RecipeContext = createContext();
+const AppContext = createContext();
 
-const RecipeProvider = ({ children }) => {
+const AppProvider = ({ children }) => {
     const [recipes, setRecipes] = useState([]);
+
+    const [authUser, setAuthUser] = useState(null)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+
     const fetchRecipes = async () => {
         try {
             const response = await fetch('http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com/api/recipes');
             const data = await response.json();
             setRecipes(data.data);
         } catch (error) {
-            console.log(error)
+            console.log("getting recipes error", error)
         }
 
     };
-
     useEffect(() => {
         fetchRecipes();
     }, []);
 
+
     return (
-        <RecipeContext.Provider value={recipes}>
+        <AppContext.Provider value={{
+            recipes,
+            authUser,
+            setAuthUser,
+            isLoggedIn,
+            setIsLoggedIn
+        }}>
             {children}
-        </RecipeContext.Provider>
+        </AppContext.Provider>
     );
 };
 
 export const useGlobalContext = () => {
-    return useContext(RecipeContext)
+    return useContext(AppContext)
 }
 
-export { RecipeContext, RecipeProvider };
+export { AppContext, AppProvider };
 
