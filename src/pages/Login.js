@@ -1,16 +1,10 @@
 import React from 'react'
-import LoginForm from '../components/LoginForm'
-import { useGlobalContext } from '../context/AppContext'
+import LoginForm from "../components/LoginForm"
 
-function Login() {
-
-
-
-  return (
-    <LoginForm />
-
-
-  )
+const Login = () => {
+    return (
+        <LoginForm />
+    )
 }
 
 export default Login

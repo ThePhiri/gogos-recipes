@@ -5,8 +5,8 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
     const [recipes, setRecipes] = useState([]);
 
-    const [authUser, setAuthUser] = useState(null)
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    // const [authUser, setAuthUser] = useState(null)
+    // const [isLoggedIn, setIsLoggedIn] = useState(false)
 
 
     const fetchRecipes = async () => {
@@ -27,10 +27,10 @@ const AppProvider = ({ children }) => {
     return (
         <AppContext.Provider value={{
             recipes,
-            authUser,
-            setAuthUser,
-            isLoggedIn,
-            setIsLoggedIn
+            // authUser,
+            // setAuthUser,
+            // isLoggedIn,
+            // setIsLoggedIn
         }}>
             {children}
         </AppContext.Provider>

@@ -22,12 +22,7 @@ export default function Navbar() {
       name: "Profile",
       path: "/profile",
       icon: faUser
-    },
-    {
-      name: "Login",
-      path: "/login",
-      icon: faUser
-    },
+    }
   ]
 
   function closeSidebar() {

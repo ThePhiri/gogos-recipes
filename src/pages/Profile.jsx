@@ -1,15 +1,22 @@
 import React from 'react'
+
+import UserRecipes from '../components/UserRecipes'
 import { useGlobalContext } from '../context/AppContext'
 
+
 const Profile = () => {
-    const { isLoggedIn, authUser } = useGlobalContext()
+    const { isLoggedIn, authUser, setIsLoggedIn, setAuthUser } = useGlobalContext()
+
+    const logout = (e) => {
+        e.preventDefault()
+        setIsLoggedIn(false)
+        setAuthUser(null)
+    }
+
+
     return (
         <div>
-            <span>show {isLoggedIn ? 'users stuff' : "redirect to login form"}</span>
-
-            {isLoggedIn ? <div><h1>hello {authUser.name}</h1>  </div> : "not logged in"}
-
-
+            <UserRecipes />
         </div>
     )
 }
