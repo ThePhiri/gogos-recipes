@@ -1,1 +1,1 @@
-Gogos recipes
+Gogos recipes front end

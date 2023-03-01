@@ -6,10 +6,14 @@ import RecipeCard from './RecipeCard'
 
 const UserRecipes = () => {
     const { ...state } = useAuthContext()
+    let userID = ""
 
     //const userID = state.user.data.InsertedID;
     const user = JSON.parse(localStorage.getItem("user"))
-    const userID = user.InsertedID;
+    if (user.length < 1) {
+        userID = user.InsertedID;
+    }
+
 
     const [isLoading, setIsLoading] = useState(null)
     const [error, setError] = useState(null)

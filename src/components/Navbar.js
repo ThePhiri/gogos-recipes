@@ -3,10 +3,12 @@ import { useState } from "react"
 import Sidebar from "./Sidebar"
 
 import { faHome, faList, faUser } from "@fortawesome/free-solid-svg-icons"
+import useLogout from "../hooks/useLogout"
 
 export default function Navbar() {
   const location = useLocation()
   const [showSidebar, setShowSidebar] = useState(false)
+  const { logout } = useLogout()
   const links = [
     {
       name: "Home",
@@ -28,22 +30,29 @@ export default function Navbar() {
   function closeSidebar() {
     setShowSidebar(false);
   }
+
+  const handleClick = () => {
+    logout()
+  }
   return (
     <>
-      <div className="navbar container">
-        <Link to="/" className="logo"> Gogos Recipes</Link>
+      <div className="flex w-full justify-between p-4">
+        <Link to="/" className="font-bold text-orange-600"> Gogos Recipes</Link>
         <div className="nav-links">
+
           {links.map(link => (
             <Link className={location.pathname === link.path ? "sidebar-link active" : "sidebar-link"} to={link.path} key={link.name}>{link.name} </Link>
           )
 
           )}
+          <Link onClick={handleClick}>Logout</Link>
+          <div onClick={() => setShowSidebar(!showSidebar)} className={showSidebar ? "sidebar-btn active" : "sidebar-btn"}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
         </div>
-        <div onClick={() => setShowSidebar(!showSidebar)} className={showSidebar ? "sidebar-btn active" : "sidebar-btn"}>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
-        </div>
+
       </div>
       {showSidebar && <Sidebar close={closeSidebar} links={links} />}
     </>
