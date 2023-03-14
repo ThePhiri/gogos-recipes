@@ -6,7 +6,7 @@ import QuoteSection from "../components/QuoteSection";
 
 function Home() {
   return (
-    <div>
+    <div >
       <HeroSection />
       <ImproveSkillsSection />
       <QuoteSection />
