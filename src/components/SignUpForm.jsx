@@ -14,13 +14,13 @@ const SignUpForm = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [userName, setUserName] = useState('')
-    const [isLoading, setIsLoading] = useState(null)
-    const [error, setError] = useState(null)
+    // const [isLoading, setIsLoading] = useState(null)
+    // const [error, setError] = useState(null)
 
     const signup = async (userName, email, password) => {
         console.log("sign up start")
-        setIsLoading(true)
-        setError(null)
+        // setIsLoading(true)
+        // setError(null)
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -44,15 +44,15 @@ const SignUpForm = () => {
         const json = await response.json()
 
         if (!response.ok) {
-            setIsLoading(false)
-            setError("json error", json.error)
+            // setIsLoading(false)
+            // setError("json error", json.error)
         }
 
         if (response.ok) {
             console.log("json", json)
             localStorage.setItem('user', JSON.stringify(json.data))
             dispatch({ type: 'LOGIN', payload: json })
-            setIsLoading(false)
+            // setIsLoading(false)
         }
 
         return json.data
@@ -73,7 +73,7 @@ const SignUpForm = () => {
 
 
     return (
-        <div className='flex pt-[50px] justify-center h-screen bg-gray-100'>
+        <div className='flex pt-[50px] justify-center h-screen items-center bg-gray-100'>
             <form onSubmit={handleSubmit}>
                 <div className='w-96 p-6 rounded shadow-sm bg-white'>
                     <div className='flex items-center justify-center mb-4'>

@@ -2,6 +2,7 @@
 import RecipeCard from "../components/RecipeCard"
 import { SearchBox } from "../components/SearchBox";
 import { useGlobalContext } from '../context/AppContext';
+import NoRecipes from "../components/NoRecipes";
 
 
 function Recipes() {
@@ -10,10 +11,10 @@ function Recipes() {
     return (<div >
         <SearchBox />
         {/* <PrevioiusSearches /> */}
-        <div className="recipes-container">
+        <div className="pt-[80px]">
             {recipes.length > 0 ? recipes.map((recipe) => (
                 <RecipeCard key={recipe.id} recipe={recipe} />
-            )) : "no recipes available"}
+            )) : <NoRecipes />}
         </div>
     </div>
     )

@@ -1,17 +1,19 @@
 import React from 'react'
 
 import UserRecipes from '../components/UserRecipes'
-import { useGlobalContext } from '../context/AppContext'
+// import { useGlobalContext } from '../context/AppContext'
 
 
 const Profile = () => {
-    const { isLoggedIn, authUser, setIsLoggedIn, setAuthUser } = useGlobalContext()
+    // const { isLoggedIn, authUser, setIsLoggedIn, setAuthUser } = useGlobalContext()
+    // const { setIsLoggedIn, setAuthUser } = useGlobalContext()
 
-    const logout = (e) => {
-        e.preventDefault()
-        setIsLoggedIn(false)
-        setAuthUser(null)
-    }
+
+    // const logout = (e) => {
+    //     e.preventDefault()
+    //     setIsLoggedIn(false)
+    //     setAuthUser(null)
+    // }
 
 
     return (

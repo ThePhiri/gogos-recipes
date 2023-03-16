@@ -7,6 +7,7 @@ import RecipeCard from './RecipeCard'
 const UserRecipes = () => {
     const { ...state } = useAuthContext()
     let userID = ""
+    console.log("state", state)
 
     //const userID = state.user.data.InsertedID;
     const user = JSON.parse(localStorage.getItem("user"))
@@ -35,6 +36,8 @@ const UserRecipes = () => {
         const json = await response.json()
 
         if (!response.ok) {
+            console.log("isLoading", isLoading)
+            console.log("error", error)
             setIsLoading(false)
             setError("json error", json.error)
         }
@@ -84,7 +87,7 @@ const UserRecipes = () => {
     useEffect(() => {
         getUserRecipes(userID)
         getUserDetails(userID)
-    }, [userID]);
+    });
 
 
 

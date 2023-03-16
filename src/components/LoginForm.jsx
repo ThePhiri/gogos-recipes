@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useGlobalContext } from '../context/AppContext'
+// import { useNavigate } from 'react-router-dom'
+// import { useGlobalContext } from '../context/AppContext'
 
 
 
 const LoginForm = () => {
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const { setAuthUser,
-        isLoggedIn,
-        setIsLoggedIn } = useGlobalContext()
+    // const { setAuthUser,
+    //     isLoggedIn,
+    //     setIsLoggedIn } = useGlobalContext()
 
 
 
@@ -27,7 +27,8 @@ const LoginForm = () => {
 
 
     return (
-        <div className='flex pt-[50px] justify-center h-screen bg-gray-100'>
+
+        <div className='flex pt-[80px] justify-center items-center h-screen bg-gray-100'>
             <form onSubmit={handleSubmit}>
                 <div className='w-96 p-6 rounded shadow-sm bg-white'>
                     <div className='flex items-center justify-center mb-4'>

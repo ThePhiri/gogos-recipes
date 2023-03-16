@@ -55,9 +55,9 @@ function Footer() {
                         <p className="font-semibold text-zinc-800 dark:text-white">Social Media</p>
 
                         <div className="flex flex-col items-start mt-5 space-y-2">
-                            <a href="#" className="text-zinc-400 hover:text-zinc-800 dark:hover:text-white">Facebook</a>
-                            <a href="#" className="text-zinc-400 hover:text-zinc-800 dark:hover:text-white">Twitter</a>
-                            <a href="#" className="text-zinc-400 hover:text-zinc-800 dark:hover:text-white">Instagram</a>
+                            <a href="#!" className="text-zinc-400 hover:text-zinc-800 dark:hover:text-white">Facebook</a>
+                            <a href="#!" className="text-zinc-400 hover:text-zinc-800 dark:hover:text-white">Twitter</a>
+                            <a href="#!" className="text-zinc-400 hover:text-zinc-800 dark:hover:text-white">Instagram</a>
                         </div>
                     </div>
                 </div>
@@ -84,20 +84,3 @@ function Footer() {
 
 export default Footer
 
-{/* <div className="footer container">
-             <div className="footerSection">
-                 <p className="title">Gogos Recipes</p>
-                 <p></p>
-                 <p>&copy; 2023 | All Rights Reserved</p>
-             </div>
-             <div className="footerSection">
-                 <p className="title">Contact Us</p>
-                 <p>developers@ninekeys.co.za</p>
-             </div>
-             <div className="footerSection">
-                 <p className="title">Socials</p>
-                 <p>Facebook</p>
-                 <p>Twitter</p>
-                 <p>Instagram</p>
-             </div>
-         </div> */}

@@ -1,13 +1,12 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useState } from "react"
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
-import Sidebar from "./Sidebar"
 
 import { faHome, faList, faUser } from "@fortawesome/free-solid-svg-icons"
 import useLogout from "../hooks/useLogout"
 
 export default function Navbar() {
-  const location = useLocation()
+  // const location = useLocation()
   const [nav, setNav] = useState(false)
   const { logout } = useLogout()
   const links = [
@@ -50,8 +49,8 @@ export default function Navbar() {
 
           </div>
           <div className=" hidden md:flex pr-2">
-            <Link onClick={handleClick} className="border text-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md mr-4">Login</Link>
-            <Link onClick={handleClick} className="text-white border bg-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md">Sign Up</Link>
+            <Link to="/login" className="border text-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md mr-4">Login</Link>
+            <Link to="/signup" className="text-white border bg-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md">Sign Up</Link>
           </div>
           <div className="md:hidden">
             {!nav ? <MenuIcon className='w-5 mr-4' onClick={handleNavClick} /> : <XIcon className='w-5 mr-4' onClick={handleNavClick} />}
