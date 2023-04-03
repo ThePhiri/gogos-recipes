@@ -11,7 +11,7 @@ const AppProvider = ({ children }) => {
 
     const fetchRecipes = async () => {
         try {
-            const response = await fetch('http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com/api/recipes');
+            const response = await fetch('https://gogos-recipes-backend.onrender.com/api/recipes');
             const data = await response.json();
             setRecipes(data.data);
         } catch (error) {

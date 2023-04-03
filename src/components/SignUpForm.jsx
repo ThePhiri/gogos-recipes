@@ -39,7 +39,7 @@ const SignUpForm = () => {
             redirect: 'follow'
         };
 
-        const response = await fetch("http://ec2-13-245-160-208.af-south-1.compute.amazonaws.com/api/users/signup", requestOptions)
+        const response = await fetch("https://gogos-recipes-backend.onrender.com/api/users/signup", requestOptions)
 
         const json = await response.json()
 
