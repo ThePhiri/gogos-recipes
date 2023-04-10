@@ -41,7 +41,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link to="/" className="text-2xl mr-4 sm:text-3xl font-bold text-orange-600"> Gogos Recipes.</Link>
             <ul className="hidden md:flex ">
-              {links.map(link => (
+              {links.map((link) => (
                 <Link to={link.path} key={link.name}><li className="p-2">{link.name}</li> </Link>
               )
               )}

@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Recipes from "./pages/Recipes";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
+import Recipe from "./pages/Recipe";
 
 
 
@@ -20,6 +21,7 @@ function App() {
 
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />
+        <Route path="/recipe" element={<Recipe />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUpForm />} />
