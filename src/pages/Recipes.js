@@ -22,7 +22,6 @@ function Recipes() {
 
 
         <div className="pt-[80px] mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {console.log("rec", recipes)}
             {recipes.length > 0 ? recipes.map((recipe) => {
                 return <RecipeCard key={recipe._id} recipe={recipe} />
             }) : isLoading === true ? <Loading /> : <NoRecipes />}

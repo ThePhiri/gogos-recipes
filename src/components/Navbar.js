@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useState } from "react"
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
@@ -27,6 +27,10 @@ export default function Navbar() {
     }
   ]
 
+  const location = useLocation()
+
+  console.log(location.pathname);
+
 
 
   const handleNavClick = () => setNav(!nav)
@@ -40,9 +44,11 @@ export default function Navbar() {
         <div className="px-2 flex justify-between items-center w-full h-full">
           <div className="flex items-center">
             <Link to="/" className="text-2xl mr-4 sm:text-3xl font-bold text-orange-600"> Gogos Recipes.</Link>
+
             <ul className="hidden md:flex ">
               {links.map((link) => (
-                <Link to={link.path} key={link.name}><li className="p-2">{link.name}</li> </Link>
+                <Link to={link.path} key={link.name}><li className={`p-2 ${location.pathname === link.path ? "text-orange-500" : ""
+                  }`}>{link.name}</li> </Link>
               )
               )}
             </ul>

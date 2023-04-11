@@ -1,33 +1,20 @@
-import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 
 
 
 function RecipeCard({ recipe }) {
+    let navigate = useNavigate()
 
 
     const handleRecipeClick = (e) => {
-        e.preventDefault();
-        console.log("id ->", e.target.value)
-        //get recipe
-        //set e.target.value to recipeid state
+        e.preventDefault()
+        console.log(e.target.value)
+        navigate(`/recipe/${e.target.value}`)
 
-        // setRecipeID(e.target.value);
-
-
-
-
-        //change window to recipe page
-        // window.location.href = '/recipe';
     }
 
-    //get recipe function
-    // const getRecipe = async (id) => {
-    //     const response = await fetch(`https://gogos-recipes-backend.onrender.com/api/recipes/${id}`);
-    //     const data = await response.json();
-    //     console.log(data);
-    //     return data;
-    // }
+
 
 
     return (
