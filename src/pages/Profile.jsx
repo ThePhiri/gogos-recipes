@@ -1,6 +1,6 @@
 import React from 'react'
 
-import UserRecipes from '../components/UserRecipes'
+// import UserRecipes from '../components/UserRecipes'
 // import { useGlobalContext } from '../context/AppContext'
 
 
@@ -18,7 +18,8 @@ const Profile = () => {
 
     return (
         <div>
-            <UserRecipes />
+            <h1>Hello</h1>
+            {/* <UserRecipes /> */}
         </div>
     )
 }

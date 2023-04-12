@@ -6,7 +6,7 @@ export const setLoading = () => {
     }
 }
 
-export const fetchRecipes = (query) => {
+export const fetchRecipes = () => {
     return async (dispatch) => {
         dispatch(setLoading())
         try {

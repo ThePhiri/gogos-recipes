@@ -12,11 +12,10 @@ import store from './redux_store/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </AuthContextProvider>
+
+    <Provider store={store}>
+      <App />
+    </Provider>
 
 
   </React.StrictMode>
