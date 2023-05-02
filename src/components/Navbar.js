@@ -26,11 +26,6 @@ export default function Navbar() {
   ]
 
   const location = useLocation()
-
-  console.log(location.pathname);
-
-
-
   const handleNavClick = () => setNav(!nav)
 
 
@@ -65,6 +60,7 @@ export default function Navbar() {
           )
           )}
           <div className="flex flex-col my-4 " >
+
             <Link to="/login"><button className="bg-transparent text-orange-600 px-4 py-2 mb-4 mr-2 border border-orange-600 hover:text-white hover:bg-orange-600 rounded-md w-full">Login</button></Link>
             <Link to="/signup"><button className="text-white border bg-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md w-full">Sign Up</button></Link>
           </div>
