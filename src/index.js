@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import "./styles/App.css"
 
-import { AuthContextProvider } from './context/AuthContext';
-
 import { Provider } from 'react-redux';
 import store from './redux_store/store';
 

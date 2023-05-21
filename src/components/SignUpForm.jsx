@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { SignUp } from '../redux_actions/userAction'
@@ -6,7 +6,6 @@ import Loading from "../components/Loading"
 
 const SignUpForm = () => {
     let navigate = useNavigate()
-    const userID = useSelector((userID) => userID.userID)
     const isLoading = useSelector((userID) => userID.userID.loading)
     const dispatch = useDispatch()
 
