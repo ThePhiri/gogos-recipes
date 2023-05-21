@@ -33,7 +33,7 @@ export const SignUp = (userData, navigate) => {
                         payload: response.data.data.InsertedID,
 
                     });
-                    console.log("id is ", response)
+                    // console.log("id is ", response)
                     //redirect to login page
                     navigate("/login")
 
@@ -80,7 +80,7 @@ export const Login = (userData, navigate) => {
                         payload: response.data.data,
 
                     });
-                    console.log("id is ", response)
+                    // console.log("id is ", response)
                     //redirect to login page
                     navigate("/profile")
                 }

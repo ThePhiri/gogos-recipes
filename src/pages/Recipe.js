@@ -11,7 +11,7 @@ const Recipe = () => {
     const isLoading = useSelector((recipe) => recipe.recipe.loading)
     const dispatch = useDispatch()
     const { id } = useParams()
-    console.log("id -> ", id)
+
 
     useEffect(() => {
         dispatch(fetchRecipe(id))

@@ -24,7 +24,7 @@ function ImproveSkillsSection() {
                             </li>
                         ))}
                     </ul>
-                    <Link to="/recipes" ><button className="py-2 px-6 ">Sign Up Now</button></Link>
+                    <Link to="/signup" ><button className="py-2 px-6 ">Sign Up Now</button></Link>
 
 
                 </div>
