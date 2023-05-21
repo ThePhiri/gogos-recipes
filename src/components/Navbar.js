@@ -53,7 +53,7 @@ export default function Navbar() {
 
           </div>
           <div className=" hidden md:flex pr-2">
-            {user.ID.length > 0 ? <><p className="text-black-600 border-orange-600 p-2 mr-4 font-bold">{user.userName}</p><button to="/login" className="border text-white-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md mr-4" onClick={handleLogout}>Log out</button></> : <><Link to="/login" className="border text-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md mr-4">Login</Link>
+            {user && user.ID.length > 0 ? <><p className="text-black-600 border-orange-600 p-2 mr-4 font-bold">{user.userName}</p><button to="/login" className="border text-white-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md mr-4" onClick={handleLogout}>Log out</button></> : <><Link to="/login" className="border text-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md mr-4">Login</Link>
               <Link to="/signup" className="text-white border bg-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md">Sign Up</Link></>}
           </div>
           <div className="md:hidden">
@@ -67,7 +67,7 @@ export default function Navbar() {
           )
           )}
           <div className="flex flex-col my-4 " >
-            {user.ID.length > 0 ? <> <button className="text-white border bg-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md w-full" onClick={handleLogout}>Logout</button>  </> : <> <Link to="/login"><button className="bg-transparent text-orange-600 px-4 py-2 mb-4 mr-2 border border-orange-600 hover:text-white hover:bg-orange-600 rounded-md w-full">Login</button></Link>
+            {user && user.ID.length > 0 ? <> <button className="text-white border bg-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md w-full" onClick={handleLogout}>Logout</button>  </> : <> <Link to="/login"><button className="bg-transparent text-orange-600 px-4 py-2 mb-4 mr-2 border border-orange-600 hover:text-white hover:bg-orange-600 rounded-md w-full">Login</button></Link>
               <Link to="/signup"><button className="text-white border bg-orange-600 border-orange-600 p-2 hover:bg-transparent hover:text-orange-600 rounded-md w-full">Sign Up</button></Link>    </>}
 
 
