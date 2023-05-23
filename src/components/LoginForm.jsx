@@ -21,7 +21,6 @@ const LoginForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(email, password)
         const user = { email, password }
         dispatch(Login(user, navigate))
 
