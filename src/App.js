@@ -7,6 +7,7 @@ import Recipes from "./pages/Recipes";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import Recipe from "./pages/Recipe";
+import AddRecipe from "./pages/AddRecipe";
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/addRecipe" element={<AddRecipe />} />
       </Routes>
 
       <Footer />

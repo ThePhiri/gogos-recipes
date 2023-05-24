@@ -5,6 +5,7 @@ import { fetchUserRecipes } from "../redux_actions/userRecipeAction";
 import RecipeCard from "../components/RecipeCard";
 import NoRecipes from "../components/NoRecipes";
 import Loading from "../components/Loading";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
     const user = useSelector((state) => state.userID.userID);
@@ -12,14 +13,23 @@ const ProfilePage = () => {
     const isLoading = useSelector((recipes) => recipes.recipes.loading)
     const userRecipes = useSelector((userRecipes) => userRecipes.userRecipes.userRecipes)
     const dispatch = useDispatch()
+    let navigate = useNavigate()
 
     function handleAddRecipe() {
         console.log("add recipe")
+        navigate("/add-recipe")
+
     }
 
+
     useEffect(() => {
+        if (!token) {
+            //redirect to login page
+            navigate("/login")
+            return;
+        }
         dispatch(fetchUserRecipes(user.ID, token))
-    }, [dispatch, token, user.ID])
+    }, [dispatch, navigate, token, user.ID])
     return (
         <div className="max-w-screen-lg mx-auto pt-[100px] py-8">
             {/* Top row */}

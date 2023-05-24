@@ -10,9 +10,9 @@
 }
 
 .loadingContainer {
-  position: relative;
+  /* position: relative;
   top: 50%;
-  left: 50%;
+  left: 50%; */
   border-radius: 50%;
   height: 96px;
   width: 96px;

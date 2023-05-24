@@ -11,6 +11,7 @@ export const SignUp = (userData, navigate) => {
 
     return async (dispatch) => {
         // dispatch(setLoading());
+        console.log("signup")
 
         dispatch({ type: "SET_USER" }, setLoading())
 
@@ -58,6 +59,7 @@ export const SignUp = (userData, navigate) => {
 export const Login = (userData, navigate) => {
 
     return async (dispatch) => {
+        console.log("login")
 
         dispatch({ type: "SET_USER" }, setLoading())
 
@@ -73,6 +75,7 @@ export const Login = (userData, navigate) => {
                 data: userData
             };
 
+            console.log('make api call')
             axios.request(config)
                 .then((response) => {
                     dispatch({
@@ -80,8 +83,7 @@ export const Login = (userData, navigate) => {
                         payload: response.data.data,
 
                     });
-                    // console.log("id is ", response)
-                    //redirect to login page
+                    console.log("id is ", response)
                     navigate("/profile")
                 }
                 )
