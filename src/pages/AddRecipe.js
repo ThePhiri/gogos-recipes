@@ -3,7 +3,7 @@ import RecipeForm from '../components/RecipeForm'
 
 function AddRecipe() {
     return (
-        <div className='pt-[80px]'>
+        <div className='pt-[80px] pb-4'>
             <RecipeForm />
         </div>
     )

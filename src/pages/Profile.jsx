@@ -8,7 +8,7 @@ import Loading from "../components/Loading";
 import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
-    const user = useSelector((state) => state.userID.userID);
+    const user = useSelector((state) => state.userID.userID.ID);
     const token = useSelector((state) => state.userID.userID.token);
     const isLoading = useSelector((recipes) => recipes.recipes.loading)
     const userRecipes = useSelector((userRecipes) => userRecipes.userRecipes.userRecipes)
@@ -17,7 +17,7 @@ const ProfilePage = () => {
 
     function handleAddRecipe() {
         console.log("add recipe")
-        navigate("/add-recipe")
+        navigate("/addrecipe")
 
     }
 
@@ -30,6 +30,7 @@ const ProfilePage = () => {
         }
         dispatch(fetchUserRecipes(user.ID, token))
     }, [dispatch, navigate, token, user.ID])
+
     return (
         <div className="max-w-screen-lg mx-auto pt-[100px] py-8">
             {/* Top row */}

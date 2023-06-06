@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
+import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
+import { addRecipe } from '../redux_actions/recipeAction';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+
 
 const RecipeForm = () => {
+    let navigate = useNavigate();
+    const dispatch = useDispatch();
+    const token = useSelector((state) => state.userID.userID.token);
+    const userID = useSelector((state) => state.userID.userID.ID);
     const [recipeData, setRecipeData] = useState({
         title: '',
         userId: '',
@@ -8,8 +17,8 @@ const RecipeForm = () => {
         culture: '',
         country: '',
         image: '',
-        ingredients: [],
-        steps: [],
+        ingredients: [''],
+        steps: [{ step: '' }],
     });
 
     const handleInputChange = (e) => {
@@ -107,10 +116,35 @@ const RecipeForm = () => {
             steps: [...prevState.steps, { step: '' }],
         }));
     };
+    const handleRemoveIngredient = (index) => {
+        setRecipeData((prevState) => {
+            const updatedIngredients = [...prevState.ingredients];
+            updatedIngredients.splice(index, 1);
+            return {
+                ...prevState,
+                ingredients: updatedIngredients,
+            };
+        });
+    };
 
-    const handleSubmit = (e) => {
+    const handleRemoveStep = (index) => {
+        setRecipeData((prevState) => {
+            const updatedSteps = [...prevState.steps];
+            updatedSteps.splice(index, 1);
+            return {
+                ...prevState,
+                steps: updatedSteps,
+            };
+        });
+    };
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("userid is", userID)
+        recipeData.userId = userID;
         // Handle form submission with the recipeData
+        dispatch(addRecipe(recipeData, navigate, token))
         console.log(recipeData);
     };
 
@@ -128,21 +162,10 @@ const RecipeForm = () => {
                     value={recipeData.title}
                     onChange={handleInputChange}
                     className="border-gray-300 border w-full px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                    required
                 />
             </div>
-            <div className="mb-4">
-                <label htmlFor="userId" className="block text-sm font-medium">
-                    User ID
-                </label>
-                <input
-                    type="text"
-                    id="userId"
-                    name="userId"
-                    value={recipeData.userId}
-                    onChange={handleInputChange}
-                    className="border-gray-300 border w-full px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-                />
-            </div>
+
             <div className="mb-4">
                 <label htmlFor="description" className="block text-sm font-medium">
                     Description
@@ -212,16 +235,20 @@ const RecipeForm = () => {
                             onChange={(e) => handleIngredientChange(e, index)}
                             className="border-gray-300 border w-full px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
                         />
+                        {index !== 0 && (
+                            <FaMinusCircle
+                                className="text-red-500 ml-2 cursor-pointer"
+                                onClick={() => handleRemoveIngredient(index)}
+                            />
+                        )}
                     </div>
                 ))}
-                <button
-                    type="button"
+                <FaPlusCircle
+                    className="text-blue-500 ml-2 cursor-pointer"
                     onClick={handleAddIngredient}
-                    className="bg-blue-500 text-white px-3 py-2 rounded-md focus:outline-none hover:bg-blue-600"
-                >
-                    Add Ingredient
-                </button>
+                />
             </div>
+
             <div className="mb-4">
                 <label htmlFor="steps" className="block text-sm font-medium">
                     Steps
@@ -235,19 +262,23 @@ const RecipeForm = () => {
                             onChange={(e) => handleStepChange(e, index)}
                             className="border-gray-300 border w-full px-3 py-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
                         />
+                        {index !== 0 && (
+                            <FaMinusCircle
+                                className="text-red-500 ml-2 cursor-pointer"
+                                onClick={() => handleRemoveStep(index)}
+                            />
+                        )}
                     </div>
                 ))}
-                <button
-                    type="button"
+                <FaPlusCircle
+                    className="text-blue-500 ml-2 cursor-pointer"
                     onClick={handleAddStep}
-                    className="bg-blue-500 text-white px-3 py-2 rounded-md focus:outline-none hover:bg-blue-600"
-                >
-                    Add Step
-                </button>
+                />
             </div>
+
             <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-blue-600"
+                className="bg-orange-500 text-white px-4 py-2 rounded-md focus:outline-none "
             >
                 Submit
             </button>
