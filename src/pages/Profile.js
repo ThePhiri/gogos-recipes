@@ -7,13 +7,15 @@ import NoRecipes from "../components/NoRecipes";
 import Loading from "../components/Loading";
 import { useNavigate } from "react-router-dom";
 
-const ProfilePage = () => {
+const Profile = () => {
     const user = useSelector((state) => state.userID.userID.ID);
+    const userDetails = useSelector((state) => state.userID.userID);
     const token = useSelector((state) => state.userID.userID.token);
     const isLoading = useSelector((recipes) => recipes.recipes.loading)
     const userRecipes = useSelector((userRecipes) => userRecipes.userRecipes.userRecipes)
     const dispatch = useDispatch()
     let navigate = useNavigate()
+
 
     function handleAddRecipe() {
         console.log("add recipe")
@@ -21,15 +23,25 @@ const ProfilePage = () => {
 
     }
 
+    let numRecipes = 0;
+    if (userRecipes && userRecipes.length > 0) {
+        numRecipes = userRecipes.length
+    }
+
 
     useEffect(() => {
-        if (!token) {
-            //redirect to login page
-            navigate("/login")
-            return;
+        // if (!token) {
+        //     console.log()
+        //     //redirect to login page
+        //     navigate("/login")
+        //     return;
+        // }
+        if (token !== "") {
+            console.log("fetch user profile")
+            dispatch(fetchUserRecipes(user, token))
         }
-        dispatch(fetchUserRecipes(user.ID, token))
-    }, [dispatch, navigate, token, user.ID])
+
+    }, [dispatch, navigate, token, user])
 
     return (
         <div className="max-w-screen-lg mx-auto pt-[100px] py-8">
@@ -38,23 +50,25 @@ const ProfilePage = () => {
                 {/* Profile image and name */}
                 <div className="flex items-center">
                     <img
-                        src={user.profilepic ? user.profilepic : "/images/cook_icon.png"} // replace with your own image source
+                        src={"/images/cook_icon.png"}
+                        // src={user.profilepic ? userDetails.profilepic : "/images/cook_icon.png"} 
+
                         alt="Profile"
                         className="w-16 h-16 rounded-full object-cover mr-4"
                     />
                     <div>
-                        <h2 className="text-xl font-bold">User Name: {user.userName}</h2>
+                        <h2 className="text-xl font-bold">User Name: {userDetails.userName}</h2>
                         <h2 className="text-xl font-bold">
-                            Name:  {user.first_name} {user.last_name}
+                            Name:  {userDetails.first_name} {userDetails.last_name}
                         </h2>
 
-                        <h2 className="text-xl font-bold">Email: {user.email}</h2>
+                        <h2 className="text-xl font-bold">Email: {userDetails.email}</h2>
                     </div>
                 </div>
                 {/* Number of recipes and likes */}
                 <div className="flex items-center">
                     <div className="mr-4">
-                        <h2 className="text-xl font-bold text-center">50</h2>
+                        <h2 className="text-xl font-bold text-center">{numRecipes}</h2>
                         <p className="text-gray-600 text-center">Recipes</p>
                     </div>
                     <div>
@@ -70,8 +84,8 @@ const ProfilePage = () => {
 
                     return (
                         <div className="flex items-center mb-8 w-full">
-                            <div className="w-full h-full bg-white rounded-lg shadow-lg overflow-hidden">
-                                <RecipeCard key={recipe._id} recipe={recipe} />
+                            <div className="w-full h-full bg-white rounded-lg shadow-lg overflow-hidden" key={recipe._id}>
+                                <RecipeCard recipe={recipe} />
                             </div>
 
 
@@ -88,4 +102,4 @@ const ProfilePage = () => {
     );
 };
 
-export default ProfilePage;
+export default Profile;

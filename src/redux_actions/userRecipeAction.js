@@ -7,8 +7,7 @@ export const setLoading = () => {
 }
 
 export const fetchUserRecipes = (id, token) => {
-    // console.log("id is ", id)
-    // console.log("token is ", token)
+
 
     return async (dispatch) => {
         dispatch({ type: "FETCH_USER_RECIPES" }, setLoading())
