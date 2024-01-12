@@ -20,7 +20,7 @@ export const SignUp = (userData, navigate) => {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: 'https://gogos-recipes-backend.onrender.com/api/users/signup',
+                url: `${process.env.REACT_APP_BASE_URL}/api/users/signup`,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -59,8 +59,7 @@ export const SignUp = (userData, navigate) => {
 export const Login = (userData, navigate) => {
 
     return async (dispatch) => {
-        console.log("login")
-
+        const baseUrl = process.env.REACT_APP_BASE_URL
         dispatch({ type: "SET_USER" }, setLoading())
 
         try {
@@ -68,14 +67,13 @@ export const Login = (userData, navigate) => {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: 'https://gogos-recipes-backend.onrender.com/api/users/login',
+                url: `${baseUrl}/api/users/login`,
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 data: userData
             };
 
-            console.log('make api call')
             axios.request(config)
                 .then((response) => {
                     dispatch({
@@ -83,7 +81,8 @@ export const Login = (userData, navigate) => {
                         payload: response.data.data,
 
                     });
-                    console.log("id is ", response)
+                    console.log("login responese is ", response)
+                    localStorage.setItem("token", response.data.data.token)
                     navigate("/profile")
                 }
                 )

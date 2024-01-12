@@ -17,7 +17,7 @@ export const fetchUserRecipes = (id, token) => {
             let config = {
                 method: 'get',
                 maxBodyLength: Infinity,
-                url: `https://gogos-recipes-backend.onrender.com/api/recipes/user/${id}`,
+                url: `${process.env.REACT_APP_BASE_URL}/api/recipes/user/${id}`,
                 headers: {
                     'token': `${token}`,
                     'Content-Type': 'application/json'
@@ -26,15 +26,12 @@ export const fetchUserRecipes = (id, token) => {
 
             axios.request(config)
                 .then((response) => {
+                    console.log("user recipes", response)
                     dispatch({
                         type: "FETCH_USER_RECIPE_SUCCESS",
                         payload: response.data.data,
 
                     });
-
-
-
-
 
                 })
                 .catch((error) => {

@@ -4,9 +4,12 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
 import { faHome, faList, faUser } from "@fortawesome/free-solid-svg-icons"
 import { useSelector } from "react-redux"
+import state from "../redux_store/store"
 
 
 export default function Navbar() {
+
+
   // const location = useLocation()
   const [nav, setNav] = useState(false)
   const links = [
@@ -31,8 +34,30 @@ export default function Navbar() {
   const user = useSelector((state) => state.userID.userID);
   const handleNavClick = () => setNav(!nav)
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+
     console.log("logout")
+    const id = state.userID.userID.ID
+
+
+
+    try {
+      const response = await fetch(`$(process.env.REACT_APP_BASE_URL)/api/users/logout/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const data = await response.json();
+      console.log(data)
+      if (data) {
+        window.location.reload()
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+
+
   }
 
 

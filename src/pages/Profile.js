@@ -45,9 +45,11 @@ const Profile = () => {
 
     return (
         <div className="max-w-screen-lg mx-auto pt-[100px] py-8">
-            {/* Top row */}
+
+
+
             <div className="flex items-center justify-between mb-8">
-                {/* Profile image and name */}
+
                 <div className="flex items-center">
                     <img
                         src={"/images/cook_icon.png"}
@@ -77,7 +79,7 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
-            {/* Second row */}
+
 
             <div className="pt-[80px] mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                 {userRecipes && userRecipes.length > 0 ? userRecipes.map((recipe) => {
@@ -98,7 +100,9 @@ const Profile = () => {
                     </button>
                 </div>
             </div>
+
         </div>
+
     );
 };
 
