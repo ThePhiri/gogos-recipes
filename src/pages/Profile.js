@@ -61,7 +61,7 @@ const Profile = () => {
                     <div>
                         <h2 className="text-xl font-bold">User Name: {userDetails.userName}</h2>
                         <h2 className="text-xl font-bold">
-                            Name:  {userDetails.first_name} {userDetails.last_name}
+                            Name:  {userDetails.firstName} {userDetails.lastName}
                         </h2>
 
                         <h2 className="text-xl font-bold">Email: {userDetails.email}</h2>
@@ -73,15 +73,14 @@ const Profile = () => {
                         <h2 className="text-xl font-bold text-center">{numRecipes}</h2>
                         <p className="text-gray-600 text-center">Recipes</p>
                     </div>
-                    <div>
-                        <h2 className="text-xl font-bold text-center">10k</h2>
-                        <p className="text-gray-600 text-center">Likes</p>
-                    </div>
                 </div>
             </div>
-
+            <div>
+                <h2 className="text-xl font-bold mb-4">Recipes</h2>
+            </div>
 
             <div className="pt-[80px] mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+
                 {userRecipes && userRecipes.length > 0 ? userRecipes.map((recipe) => {
 
                     return (
@@ -94,11 +93,12 @@ const Profile = () => {
                         </div>
                     )
                 }) : isLoading === true ? <Loading /> : <NoRecipes />}
-                <div className="flex items-center justify-center w-full">
-                    <button className="text-sm font-medium text-white-500 py-2 px-4" onClick={handleAddRecipe}>
-                        Add More Recipes
-                    </button>
-                </div>
+
+            </div>
+            <div className="flex items-center justify-center w-full">
+                <button className="text-sm font-medium text-white-500 py-2 px-4" onClick={handleAddRecipe}>
+                    Add Recipe
+                </button>
             </div>
 
         </div>

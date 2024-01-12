@@ -11,6 +11,7 @@ const Recipe = ({ recipe }) => {
         <div className="bg-white rounded-lg shadow-md overflow-hidden p-4">
 
             <button className="bg-transparent text-orange-600 px-4 py-2 mb-4 mr-2 border border-orange-600 hover:text-white hover:bg-orange-600 rounded-md"
+                // Fix back button
                 onClick={() => navigate(-1)}>
 
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
