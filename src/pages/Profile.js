@@ -79,15 +79,15 @@ const Profile = () => {
                 <h2 className="text-xl font-bold mb-4">Recipes</h2>
             </div>
 
-            <div className="pt-[80px] mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className=" flex flex-wrap">
 
                 {userRecipes && userRecipes.length > 0 ? userRecipes.map((recipe) => {
 
                     return (
-                        <div className="flex items-center mb-8 w-full">
-                            <div className="w-full h-full bg-white rounded-lg shadow-lg overflow-hidden" key={recipe._id}>
-                                <RecipeCard recipe={recipe} />
-                            </div>
+                        <div className="flex">
+
+                            <RecipeCard recipe={recipe} key={recipe._id} />
+
 
 
                         </div>

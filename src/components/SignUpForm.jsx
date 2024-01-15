@@ -5,6 +5,7 @@ import { SignUp } from '../redux_actions/userAction'
 import Loading from "../components/Loading"
 
 const SignUpForm = () => {
+    console.log('SignUpForm')
     let navigate = useNavigate()
     const isLoading = useSelector((userID) => userID.userID.loading)
     const dispatch = useDispatch()

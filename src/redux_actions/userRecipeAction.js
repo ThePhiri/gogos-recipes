@@ -26,7 +26,7 @@ export const fetchUserRecipes = (id, token) => {
 
             axios.request(config)
                 .then((response) => {
-                    console.log("user recipes", response)
+
                     dispatch({
                         type: "FETCH_USER_RECIPE_SUCCESS",
                         payload: response.data.data,
