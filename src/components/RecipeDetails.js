@@ -15,6 +15,16 @@ const Recipe = ({ recipe }) => {
                         <img alt="feature" class="object-cover object-center h-full w-full" src={image} />
                     </div>
                     <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
+
+                        <div class="flex flex-wrap w-full mb-4">
+                            <div class="lg:w-1/2 w-full mb-4 lg:mb-0">
+                                <h2 class="font-medium title-font text-gray-900 tracking-widest text-sm">COUNTRY</h2>
+                                <div class="flex flex-wrap w-full mb-4">
+                                    <h1 class="text-2xl font-medium text-gray-900 mb-4">{country}</h1>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="flex flex-col mb-10 lg:items-start items-center">
                             <div >
                                 <h2 className="text-2xl font-bold text-gray-800">Description</h2>
