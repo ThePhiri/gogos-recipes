@@ -4,7 +4,6 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
 import { faHome, faList, faUser } from "@fortawesome/free-solid-svg-icons"
 import { useSelector } from "react-redux"
-import state from "../redux_store/store"
 
 
 export default function Navbar() {
@@ -37,11 +36,6 @@ export default function Navbar() {
   const handleNavClick = () => setNav(!nav)
 
   const handleLogout = async () => {
-
-    console.log("logout")
-
-
-    console.log("id", id)
 
 
     try {

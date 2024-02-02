@@ -1,5 +1,4 @@
-name: S3 Site Deploy
-
+name: Build 
 on:
   push:
     branches:
