@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from "../components/Loading";
@@ -8,9 +9,11 @@ import { useForm } from 'react-hook-form';
 const LoginForm = () => {
     let navigate = useNavigate();
     const userID = useSelector((state) => state.userID.insertedID);
-    const isLoading = useSelector((state) => state.userID.loading);
     const error = useSelector((state) => state.userID.error);
     const dispatch = useDispatch();
+
+    //set isLoading to false
+    const [isLoading, setIsLoading] = useState(false);
 
     const {
         register,
@@ -19,6 +22,7 @@ const LoginForm = () => {
     } = useForm();
 
     const saveForm = async (data) => {
+        setIsLoading(true);
 
         dispatch(Login(data, navigate));
 

@@ -9,6 +9,8 @@ import state from "../redux_store/store"
 
 export default function Navbar() {
 
+  const id = useSelector((state) => state.userID.userID.ID);
+
 
   // const location = useLocation()
   const [nav, setNav] = useState(false)
@@ -37,18 +39,18 @@ export default function Navbar() {
   const handleLogout = async () => {
 
     console.log("logout")
-    const id = state.userID.userID.ID
 
+
+    console.log("id", id)
 
 
     try {
-      const response = await fetch(`$(process.env.REACT_APP_BASE_URL)/api/users/logout/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/users/logout/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
       });
       const data = await response.json();
-      console.log(data)
+      console.log("data", data)
       if (data) {
         window.location.reload()
       }

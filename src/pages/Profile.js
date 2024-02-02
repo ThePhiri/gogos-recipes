@@ -84,9 +84,9 @@ const Profile = () => {
                 {userRecipes && userRecipes.length > 0 ? userRecipes.map((recipe) => {
 
                     return (
-                        <div className="flex">
+                        <div className="flex" key={recipe._id}>
 
-                            <RecipeCard recipe={recipe} key={recipe._id} />
+                            <RecipeCard recipe={recipe} isAuthenticated={true} />
 
 
 
