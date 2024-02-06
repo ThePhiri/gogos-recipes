@@ -69,10 +69,12 @@ const Profile = () => {
                 </div>
                 {/* Number of recipes and likes */}
                 <div className="flex items-center">
-                    <div className="mr-4">
+                    {numRecipes > 0 && <div className="mr-4">
                         <h2 className="text-xl font-bold text-center">{numRecipes}</h2>
                         <p className="text-gray-600 text-center">Recipes</p>
                     </div>
+                    }
+
                 </div>
             </div>
             <div>

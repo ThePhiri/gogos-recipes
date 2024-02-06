@@ -1,56 +1,34 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { SignUp } from '../redux_actions/userAction'
 import Loading from "../components/Loading"
+import { useForm } from 'react-hook-form'
 
 const SignUpForm = () => {
-    console.log('SignUpForm')
     let navigate = useNavigate()
-    const isLoading = useSelector((userID) => userID.userID.loading)
     const dispatch = useDispatch()
+    const [isLoading, setIsLoading] = useState(false)
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [userName, setUserName] = useState('')
-    const [passwordError, setPasswordError] = useState('')
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isDirty, isValid }, // Include isDirty and isValid in formState
+        watch
+    } = useForm();
 
+    const password = watch("password");
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-
-
-        if (password !== confirmPassword) {
-            setPasswordError('Passwords do not match')
-            return
-        }
-
-        const user = { email, password, confirmPassword, userName }
-        dispatch(SignUp(user, navigate))
-
+    const saveForm = async (data) => {
+        setIsLoading(true)
+        dispatch(SignUp(data, navigate))
     }
-
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-        if (passwordError) {
-            setPasswordError('')
-        }
-    }
-
-    const handleConfirmPasswordChange = (e) => {
-        setConfirmPassword(e.target.value)
-        if (passwordError) {
-            setPasswordError('')
-        }
-    }
-
-
 
     return (
-        isLoading ? <Loading /> :
-            <div className='flex pt-[50px] justify-center h-screen items-center bg-gray-100'>
-                <form onSubmit={handleSubmit}>
+
+        <div className='flex pt-[50px] justify-center h-screen items-center bg-gray-100'>
+            {isLoading ? <Loading /> :
+                <form onSubmit={handleSubmit(saveForm)}>
                     <div className='w-96 p-6 rounded shadow-sm bg-white'>
                         <div className='flex items-center justify-center mb-4'>
                             <img src='./images/cooking.png' alt='cooking lady' className='h-32' />
@@ -60,45 +38,43 @@ const SignUpForm = () => {
                         <input
                             className='w-full py-2 bg-gray-50 text-gray-500 px-1 outline-none mb-4'
                             type='text'
-                            onChange={(e) => setUserName(e.target.value)}
-                            value={userName}
-                            required
+                            {...register('userName', { required: 'Username is required' })}
                         />
+                        {errors.userName && <p className="text-red-500">{errors.userName.message}</p>}
                         <label className='text-gray-700'>Email</label>
                         <input
                             className='w-full py-2 bg-gray-50 text-gray-500 px-1 outline-none mb-4'
                             type='email'
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                            required
+                            {...register('email', { required: 'Email is required' })}
                         />
+                        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
                         <label className='text-gray-700'>Password</label>
                         <input
                             className='w-full py-2 bg-gray-50 text-gray-500 px-1 outline-none mb-6'
                             type='password'
-                            onChange={handlePasswordChange}
-                            value={password}
-                            required
+                            {...register('password', { required: 'Password is required' })}
                         />
-                        <label className='text-red-700'>{passwordError}</label>
+                        {errors.password && <p className="text-red-500">{errors.password.message}</p>}
                         <label className='text-gray-700'>Confirm Password</label>
                         <input
                             className='w-full py-2 bg-gray-50 text-gray-500 px-1 outline-none mb-6'
                             type='password'
-                            onChange={handleConfirmPasswordChange}
-                            value={confirmPassword}
-                            required
+                            {...register('confirmPassword', {
+                                validate: value => value === password || 'The passwords do not match',
+                            })}
                         />
+                        {errors.confirmPassword && <p className="text-red-500">{errors.confirmPassword.message}</p>}
                         <button
                             type='submit'
-                            disabled={passwordError}
-                            className='bg-orange-600 w-full text-gray-100 rounded hover:bg-gray-100 hover:text-orange-600 transition-colors p-2'
+                            className={`bg-orange-600 w-full text-gray-100 rounded hover:bg-gray-100 hover:text-orange-600 transition-colors p-2 ${(!isDirty || !isValid) && 'opacity-50 cursor-not-allowed'}`}
+                            disabled={!isDirty || !isValid} // Disable button if form is not dirty or not valid
                         >
                             Sign Up
                         </button>
                     </div>
                 </form>
-            </div>
+            }
+        </div>
     )
 }
 
