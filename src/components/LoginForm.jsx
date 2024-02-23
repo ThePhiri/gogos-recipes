@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loading from "../components/Loading";
 import { Login } from '../redux_actions/userAction';
 import { useForm } from 'react-hook-form';
+import { convertLength } from '@mui/material/styles/cssUtils';
 
 const LoginForm = () => {
     let navigate = useNavigate();
@@ -34,7 +35,7 @@ const LoginForm = () => {
 
 
     return (
-        <div className='flex pt-[80px] justify-center items-center h-screen bg-gray-100'>
+        <div className="flex pt-[80px] justify-center items-center h-screen" style={{ backgroundImage: `url('/images/hero_images/grandma.jpeg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
             {isLoading ? (
                 <Loading />
             ) : (
@@ -64,7 +65,7 @@ const LoginForm = () => {
                     </form>
                 </>
             )}
-        </div>
+        </div >
     );
 }
 

@@ -26,7 +26,7 @@ const SignUpForm = () => {
 
     return (
 
-        <div className='flex pt-[50px] justify-center h-screen items-center bg-gray-100'>
+        <div className='flex pt-[50px] justify-center h-screen items-center' style={{ backgroundImage: `url('/images/hero_images/grandma.jpeg')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
             {isLoading ? <Loading /> :
                 <form onSubmit={handleSubmit(saveForm)}>
                     <div className='w-96 p-6 rounded shadow-sm bg-white'>
