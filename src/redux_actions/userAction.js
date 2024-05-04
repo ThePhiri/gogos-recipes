@@ -11,7 +11,6 @@ export const SignUp = (userData, navigate) => {
 
     return async (dispatch) => {
         // dispatch(setLoading());
-        console.log("signup")
 
         dispatch({ type: "SET_USER" }, setLoading())
 
@@ -81,7 +80,6 @@ export const Login = (userData, navigate) => {
                         payload: response.data.data,
 
                     });
-                    console.log("login responese is ", response)
                     localStorage.setItem("token", response.data.data.token)
                     navigate("/profile")
                 }

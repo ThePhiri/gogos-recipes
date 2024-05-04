@@ -145,7 +145,6 @@ const RecipeForm = () => {
         recipeData.userId = userID;
         // Handle form submission with the recipeData
         dispatch(addRecipe(recipeData, navigate, token))
-        console.log(recipeData);
     };
 
     return (

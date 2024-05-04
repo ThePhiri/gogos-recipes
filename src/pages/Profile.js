@@ -18,7 +18,6 @@ const Profile = () => {
 
 
     function handleAddRecipe() {
-        console.log("add recipe")
         navigate("/addrecipe")
 
     }
@@ -37,7 +36,6 @@ const Profile = () => {
         //     return;
         // }
         if (token !== "") {
-            console.log("fetch user profile")
             dispatch(fetchUserRecipes(user, token))
         }
 
